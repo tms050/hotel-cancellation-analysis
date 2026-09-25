@@ -223,3 +223,7 @@ data/processed/*.csv
 !data/raw/.gitkeep
 !data/processed/.gitkeep
 .ipynb_checkpoints/
+__pycache__/
+*.pyc
+.venv/
+venv/
