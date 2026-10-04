@@ -41,12 +41,12 @@ hotel-cancellation-analysis/<br>
 ├── requirements.txt # зависимости<br>
 ├── data/<br>
 │ ├── raw/ # исходный CSV (не в git)<br>
-│ └── processed/ # очищенный датасет (генерируется)<br>
+│ └── processed/hotels_clean.csv # очищенный датасет (генерируется)<br>
 ├── docs/<br>
 │ └── business_questions.md # бизнес-вопросы, FR, NFR<br>
 └── notebooks/<br>
-├── 01_data_quality.ipynb # аудит и очистка данных<br>
-├── 02_general_stats.ipynb # общая статистика бронирований<br>
+├── 01_data_quality.ipynb # аудит и очистка данных **готово**<br>
+├── 02_general_stats.ipynb # общая статистика бронирований **готово**<br>
 └── 03_cancellation_analysis.ipynb # анализ отмен и рекомендации<br>
 
 ## Методология
@@ -59,7 +59,7 @@ hotel-cancellation-analysis/<br>
 
 ## Статус
 
-Проект в разработке. Текущий этап: **Переход к составлению общей статистики**.
+Проект в разработке. Текущий этап: **Общая статистика завершена, переход к анализу отмен**.
 
 ## Ограничения анализа
 
@@ -89,5 +89,18 @@ hotel-cancellation-analysis/<br>
 ### Производные признаки
 - `total_nights` = stays_week_nights + stays_weekend_nights
 - `total_guests` = adults + children + babies
-- `total_cost` = adr * total_nights
+- `total_revenue` = adr * total_nights
 - `booking_date` = arrival_date - lead_time (дней)
+
+## Общая статистика
+
+**Датасет:** 119 385 броней, июль 2015 — август 2017 (26 месяцев; 2015 и 2017 неполные).
+
+- **Отмены:** 37% всех броней. City Hotel — 42%, Resort Hotel — 28%.
+- **Выручка от проживания** (только состоявшиеся брони): ~26 млн. Топ-10% броней дают 31.6% выручки.
+- **Каналы:** 80% выручки идёт через TA/TO, 53% — через Online TA. Direct — самый надёжный канал (15% отмен), Groups — самый рискованный (61%).
+- **Сезонность:** устойчивый пик весной (май — ядро сезона). Профиль воспроизводится между годами.
+- **Разные бизнес-модели:** City — короткие дорогие брони с высоким риском отмены; Resort — длинные дешёвые с низким.
+- **`meal`:** BB — 77% броней (базовый тариф). FB — 0.7% броней, но 60% отмен.
+
+Детали и графики — в [`notebooks/02_general_stats.ipynb`](notebooks/02_general_stats.ipynb).
