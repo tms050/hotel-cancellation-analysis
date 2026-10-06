@@ -90,7 +90,7 @@ hotel-cancellation-analysis/<br>
 
 ## Статус
 
-Проект в разработке. Текущий этап: **Общая статистика завершена, переход к анализу отмен**.
+**v1.0 - завершён.** Реализованы все три этапа: аудит данных, общая статистика, анализ отмен. Возможные расширения: прогноза отмен, дашборд, A/B-тесты рекомендаций. Не входят в текущий скоуп.
 
 ## Ограничения анализа
 
@@ -135,3 +135,36 @@ hotel-cancellation-analysis/<br>
 - **`meal`:** BB — 77% броней (базовый тариф). FB — 0.7% броней, но 60% отмен.
 
 Детали и графики — в [`notebooks/02_general_stats.ipynb`](notebooks/02_general_stats.ipynb).
+
+## Как запустить
+
+1. Клонировать репозиторий:
+   ```bash
+   git clone git@github.com:tms050/hotel-cancellation-analysis.git
+   cd hotel-cancellation-analysis
+   ```
+
+2. Создать и активировать виртуальное окружение:
+   ```bash
+   python -m venv .venv
+   source .venv/Scripts/activate
+   # или
+   source .venv/bin/activate
+   ```
+
+3. Установить зависимости:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. Скачать исходные данные в `data/raw/`:
+   ```bash
+   curl -o data/raw/hotels.csv https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-02-11/hotels.csv
+   ```
+
+5. Запустить ноутбуки последовательно:
+   ```bash
+   jupyter notebook
+   ```
+
+   Открыть и выполнить `01_data_quality.ipynb` -> `02_general_stats.ipynb` -> `03_cancellation_analysis.ipynb`.
